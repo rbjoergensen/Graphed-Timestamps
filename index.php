@@ -1,11 +1,22 @@
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 
-<canvas id="myChart" width="740" height="200"></canvas>
+<style>
+.container
+{
+  width:80%;
+  height:30%;
+}
+</style>
 
+<br><br><br>
+<center>
+  <div class="container">
+    <canvas id="myChart"></canvas>
+  </div>
+</center>
 
 <script type="text/javascript">
-
 $.getJSON("http://localhost/includes/data.php", function (result) {
     var labels = [], data = [];
 
@@ -19,19 +30,29 @@ $.getJSON("http://localhost/includes/data.php", function (result) {
     var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                    labels: labels,
-            datasets: [
-            {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: data
+              labels: labels,
+              datasets: [
+              {
+                label: "Detected Events",
+                backgroundColor: "#5892ef",
+                borderColor: "#00000",
+                pointColor: "#f46b42",
+                pointStrokeColor: "#f46b42",
+                pointHighlightFill: "#f46b42",
+                pointHighlightStroke: "#f46b42",
+                borderWidth: "2",
+                data: data
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    suggestedMin: 0
+                  }
+                }]
+              }
             }
-            ]}
-});
+          });
 });
 </script>
