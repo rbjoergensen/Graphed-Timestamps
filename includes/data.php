@@ -15,7 +15,12 @@ if (!$db_connection)
 {
 	die('Error: Could not connect: ' . pg_last_error());
 }
-$result = pg_query("SELECT activityid, activitytime FROM activities");
+$result = pg_query("SELECT
+    									date_trunc('minute', activitytime) - (CAST(EXTRACT(MINUTE FROM activitytime) AS integer) % 5) * interval '1 minute' AS trunc_5_minute,
+    									count(*)
+										FROM activities
+										GROUP BY trunc_5_minute
+										ORDER BY trunc_5_minute;");
 //$result = pg_query("SELECT * FROM information_schema.columns WHERE table_name = 'activities'");
 //while ($row = pg_fetch_row($result))
 //{
