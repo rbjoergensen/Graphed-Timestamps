@@ -21,7 +21,7 @@ $.getJSON("http://localhost/includes/data.php", function (result) {
     var labels = [], data = [];
 
     for (var i = 0; i < result.length ; i++){
-            labels.push(result[i].trunc_5_minute);
+            labels.push(result[i].dte);
             data.push(result[i].count);
             console.log("result");
     }
@@ -49,6 +49,12 @@ $.getJSON("http://localhost/includes/data.php", function (result) {
                 yAxes: [{
                   ticks: {
                     suggestedMin: 0
+                  }
+                }],
+                xAxes: [{
+                  ticks: {
+                    maxRotation: 90,
+                    minRotation: 50
                   }
                 }]
               }

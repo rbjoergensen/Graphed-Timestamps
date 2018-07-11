@@ -15,12 +15,18 @@ if (!$db_connection)
 {
 	die('Error: Could not connect: ' . pg_last_error());
 }
-$result = pg_query("SELECT
-    									date_trunc('minute', activitytime) - (CAST(EXTRACT(MINUTE FROM activitytime) AS integer) % 5) * interval '1 minute' AS trunc_5_minute,
-    									count(*)
-										FROM activities
-										GROUP BY trunc_5_minute
-										ORDER BY trunc_5_minute;");
+
+$SETTING_DAYS = "";
+$SETTING_INTERVAL = "";
+
+
+// interval can be day, hour etc.
+$result = pg_query("SELECT d.dte, count(a.activitytime)
+										from generate_series(current_date - interval '12 hour', current_date, '15 minute') d(dte) left join
+     									activities a
+     								on a.activitytime >= d.dte and a.activitytime < d.dte + interval '15 minute'
+										group by d.dte
+										order by d.dte;");
 //$result = pg_query("SELECT * FROM information_schema.columns WHERE table_name = 'activities'");
 //while ($row = pg_fetch_row($result))
 //{
