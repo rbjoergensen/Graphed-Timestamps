@@ -1,6 +1,5 @@
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-
 <style>
 .container
 {
@@ -17,7 +16,7 @@
 </center>
 
 <script type="text/javascript">
-$.getJSON("http://localhost/Graphed-Timestamps/src/includes/data.php", function (result) {
+$.getJSON("http://events.callofthevoid.dk/includes/data.php", function (result) {
     var labels = [], data = [];
 
     for (var i = 0; i < result.length ; i++){

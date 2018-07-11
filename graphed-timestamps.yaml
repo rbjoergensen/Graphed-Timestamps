@@ -1,0 +1,42 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: graphed-timestamps
+  namespace: web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: graphed-timestamps
+        category: web
+    spec:
+      containers:
+      - name: graphed-timestamps
+        image: wrix/graphed-timestamps:latest
+        ports:
+        - containerPort: 80
+        resources:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphed-timestamps
+  namespace: web
+  labels:
+    app: graphed-timestamps
+    category: web
+spec:
+  loadBalancerIP: 10.132.0.6
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+  selector:
+    app: graphed-timestamps
