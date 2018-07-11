@@ -19,21 +19,14 @@ if (!$db_connection)
 $SETTING_DAYS = "";
 $SETTING_INTERVAL = "";
 
-
 // interval can be day, hour etc.
-$result = pg_query("SELECT d.dte, count(a.activitytime)
-										from generate_series(current_date - interval '12 hour', current_date, '15 minute') d(dte) left join
-     									activities a
-     								on a.activitytime >= d.dte and a.activitytime < d.dte + interval '15 minute'
-										group by d.dte
-										order by d.dte;");
-//$result = pg_query("SELECT * FROM information_schema.columns WHERE table_name = 'activities'");
-//while ($row = pg_fetch_row($result))
-//{
-  //foreach ($row as $column){echo "$column - ";}
-  //echo "<br>";
-//  $data[] = $row;
-//}
+$result = pg_query("SELECT
+	d.dte, count(a.activitytime)
+	from generate_series(current_date - interval '12 hour', current_date, '15 minute') d(dte) left join
+  	activities a
+  on a.activitytime >= d.dte and a.activitytime < d.dte + interval '15 minute'
+	group by d.dte
+	order by d.dte;");
 $myarray = pg_fetch_all($result);
 print json_encode($myarray);
 ?>
