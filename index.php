@@ -48,7 +48,8 @@ $.getJSON("http://localhost/includes/data.php", function (result) {
               scales: {
                 yAxes: [{
                   ticks: {
-                    suggestedMin: 0
+                    suggestedMin: 0,
+                    suggestedMax: 10
                   }
                 }],
                 xAxes: [{
