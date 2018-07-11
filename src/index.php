@@ -17,7 +17,7 @@
 </center>
 
 <script type="text/javascript">
-$.getJSON("http://localhost/includes/data.php", function (result) {
+$.getJSON("http://localhost/Graphed-Timestamps/src/includes/data.php", function (result) {
     var labels = [], data = [];
 
     for (var i = 0; i < result.length ; i++){
