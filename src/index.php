@@ -1,64 +1,59 @@
 <script type="text/javascript" src="js/Chart.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<!-- Material Design Lite -->
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<!-- Material Design icon font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style>
 .container
 {
   width:80%;
   height:30%;
 }
+body{ background-color: #0a0a0a; }
 </style>
 
-<br><br><br>
-<center>
-  <div class="container">
-    <canvas id="myChart"></canvas>
-  </div>
-</center>
+<body>
 
-<script type="text/javascript">
-$.getJSON("http://events.callofthevoid.dk/includes/data.php", function (result) {
-    var labels = [], data = [];
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">CotV - Graphs</span>
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Motion Events</a>
+      <a href="#scroll-tab-2" class="mdl-layout__tab">TBD</a>
+      <a href="#scroll-tab-3" class="mdl-layout__tab">TBD</a>
+      <a href="#scroll-tab-4" class="mdl-layout__tab">TBD</a>
+      <a href="#scroll-tab-5" class="mdl-layout__tab">TBD</a>
+      <a href="#scroll-tab-6" class="mdl-layout__tab">TBD</a>
+    </div>
+  </header>
 
-    for (var i = 0; i < result.length ; i++){
-            labels.push(result[i].dte);
-            data.push(result[i].count);
-            console.log("result");
-    }
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+      <div class="page-content"><?php include("./js/graph_motion1.php"); ?></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="scroll-tab-4">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+  </main>
+</div>
 
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: labels,
-              datasets: [
-              {
-                label: "Detected Events",
-                backgroundColor: "#5892ef",
-                borderColor: "#00000",
-                pointColor: "#f46b42",
-                pointStrokeColor: "#f46b42",
-                pointHighlightFill: "#f46b42",
-                pointHighlightStroke: "#f46b42",
-                borderWidth: "2",
-                data: data
-              }]
-            },
-            options: {
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 10
-                  }
-                }],
-                xAxes: [{
-                  ticks: {
-                    maxRotation: 90,
-                    minRotation: 50
-                  }
-                }]
-              }
-            }
-          });
-});
-</script>
+</body>
