@@ -1,8 +1,12 @@
 <br>
 <center>
-  <div class="container">
+
+  <table width=65% height=50%>
+    <td>
     <canvas id="myChart"></canvas>
-  </div>
+  </td>
+  </table>
+
 </center>
 
 
@@ -10,7 +14,7 @@
 
 Chart.defaults.global.defaultFontColor = "#d3d3d3";
 $.getJSON("http://events.callofthevoid.dk/includes/data.php", function (result) {
-//$.getJSON("http://localhost/Graphed-Timestamps/src/includes/data.php", function (result) {
+//$.getJSON("http://localhost/includes/data.php", function (result) {
     var labels = [], data = [];
 
     for (var i = 0; i < result.length ; i++){

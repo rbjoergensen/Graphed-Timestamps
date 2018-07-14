@@ -7,11 +7,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <style>
-.container
-{
-  width:80%;
-  height:30%;
-}
+
 body{ background-color: #0a0a0a; }
 </style>
 

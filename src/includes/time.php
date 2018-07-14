@@ -8,7 +8,7 @@ $time_minut = date('m', $date);
 // Echo time, add 2 hours of padding for the graph and convert to minutes. Then Add the minutes of the hour.
 $minutesPassed = (($time_hours + 1) * 60) + $time_minut;
 $minutesPassed = "'" . $minutesPassed . " minute'";
-$minutesSubtr = 1440 - (($time_hours + 0) * 60) + $time_minut;
+$minutesSubtr = 900 - (($time_hours + 0) * 60) + $time_minut;
 $minutesSubtr = "'" . $minutesSubtr . " minute'";
 
  ?>

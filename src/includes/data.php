@@ -17,7 +17,7 @@ if (!$db_connection)
 	die('Error: Could not connect: ' . pg_last_error());
 }
 
-$SETTING_INTERVAL = "'30 minute'";
+$SETTING_INTERVAL = "'15 minute'";
 
 // interval can be day, hour, minute etc.
 $result = pg_query("SELECT
